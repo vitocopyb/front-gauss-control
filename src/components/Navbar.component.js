@@ -10,16 +10,23 @@ export const NavbarComponent = () => {
         dispatch(obtenerSummary(search));
         dispatch(obtenerRanking(search));
     }, [dispatch, search]);
-    
+
     const handleInputChange = ({target}) => {
-        const formValid = true;
-        // ---------------------------------------------------------
-        // TODO: validar que fecha desde no sea mayor a fecha hasta
-        // dispatch uiReducer
-        // ---------------------------------------------------------
+        let formValid = true;
+        search[target.name] = target.value;
+
+        // valida que la "fecha desde" no sea mayor que "fecha hasta"
+        if (target.name === 'start' || target.name === 'end') {
+            if (search.start > search.end) {
+                formValid = false;
+                // ---------------------------------------------------------
+                // TODO: agregar SweetAlert
+                // ---------------------------------------------------------
+                alert('Fecha Desde no puede ser mayor a Fecha Hasta');
+            }
+        }
 
         if (formValid) {
-            search[target.name] = target.value;
             dispatch(filtrosBusqueda(search));
             dispatch(obtenerSummary(search));
             dispatch(obtenerRanking(search));

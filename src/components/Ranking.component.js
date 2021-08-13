@@ -8,7 +8,7 @@ export const RankingComponent = () => {
         <div>
             <div className="table__container">
                 <div className="fw-bold text-center mb-4">Ranking de personas</div>
-                <div>
+                <div className={(detailRanking.length) > 2 ? 'table__overflow': ''}>
                     <table className="table">
                         <thead>
                             <tr>
@@ -38,7 +38,9 @@ export const RankingComponent = () => {
                                             </div>
                                         </td>
                                         <td align="center" valign="middle">
-                                            <div className="row__tasa-text">{item.rejectedIndicator.rate}%</div>
+                                            <div className={`row__tasa-text ${item.rejectedIndicator.status.toLowerCase()}__text`}>
+                                                {item.rejectedIndicator.rate}%
+                                            </div>
                                         </td>
                                     </tr>
                                 ))
