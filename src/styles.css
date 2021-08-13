@@ -1,0 +1,196 @@
+/*
+negro: #343434;
+naranjo: #ed6e04;
+gris-menu-activo: #464445;
+texto-gris-menu: #9f9f9f;
+verde-borde: #06c394;
+verde-circulo: #00dba6;
+amarillo: #f6b91b;
+rojo: f05e6d;
+violeta: b627e9;
+texto: 6b7777;
+tabla-head: eeeeee;
+tabla-fila: f5f5f5;
+fondo-ranking: 62beee;
+*/
+
+:root {
+    --color-dark: #343434;
+    --color-orange: #ed6e04;
+    --color-grey-dark: #464445;
+    --color-grey: #9f9f9f;
+    --color-green-dark: #06c394;
+    --color-green: #00dba6;
+    --color-yellow: #f6b91b;
+    --color-yellow-dark: #dfa616;
+    --color-red: #f05e6d;
+    --color-red-dark: #c54d59;
+    --color-purple: #b627e9;
+    --color-grey-text: #6b7777;
+    --color-table-head: #eeeeee;
+    --color-table-row: #f5f5f5;
+    --color-blue-light: #62beee;
+}
+
+body {
+    background-color: var(--color-dark);
+}
+
+/* para debuggear */
+.border__red {
+    border: 2px solid red;
+}
+.border__yellow {
+    border: 2px solid yellow;
+}
+
+.menu__container {
+    background-color: var(--color-dark);
+    width: 16rem;
+    height: 100vh;
+}
+
+.menu__logo {
+    width: 8rem;
+}
+
+.menu__item {
+    color: var(--color-grey);
+    font-size: .8rem;
+    font-weight: 700;
+    padding: 1rem 1rem;
+}
+
+.text__active {
+    color: var(--color-orange);
+}
+
+.menu__item-bg-active {
+    background-color: var(--color-grey-dark);
+}
+
+.menu__sub-item {
+    margin-left: 2rem;
+    margin-top: .5rem;
+}
+
+.navbar__container {
+    background-color: var(--color-dark);
+    color: white;
+    padding: .5rem 2rem;
+}
+
+.main__container {
+    border-left: .5rem solid var(--color-green-dark);
+    padding: 2.5rem 2rem;
+    color: var(--color-grey-text);
+    font-size: .8rem;
+    background-color: white;
+}
+
+.main__text-help {
+    font-size: .7rem;
+}
+
+.circle__container {
+    width: 10rem;
+}
+
+.circle__wrapper {
+    /* border: .3rem solid var(--color-green-dark);
+    background-color: var(--color-green); */
+    width: 6rem;
+    height: 6rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.7rem;
+    border-radius: 50%;
+}
+
+.circle__evolution {
+    position: relative;
+    top: 5rem;
+    right: -8rem;
+}
+
+.bar__container {
+    width: 10rem;
+}
+
+.bar__wrapper {
+    width: 10rem;
+    height: 1.5rem;
+}
+
+.table__container {
+    width: 30rem;
+}
+
+.table th {
+    background-color: var(--color-table-head);
+    color: var(--color-grey-dark);
+    border-bottom-color: transparent !important;
+}
+
+.table th.head__width-ranking {
+    width: 5.5rem !important;
+}
+
+.table th.head__width-tasa {
+    width: 9rem !important;
+}
+.table td {
+    background-color: var(--color-table-row);
+    color: var(--color-grey-dark);
+}
+
+.table td.row__ranking {
+    background-color: var(--color-blue-light);
+    color: white;
+}
+
+.table td i.row__icon {
+    color: var(--color-grey-text);
+}
+
+.table td {
+    border-bottom: .4rem solid white;
+}
+
+.row__ranking-text {
+    font-size: 2.5rem;
+}
+
+.row__tasa-text {
+    font-size: 1.5rem;
+}
+
+.good,
+.approved {
+    background-color: var(--color-green);
+}
+
+.good__border {
+    border: .3rem solid var(--color-green-dark);
+}
+
+.fair {
+    background-color: var(--color-yellow);
+}
+
+.fair__border {
+    border: .3rem solid var(--color-yellow-dark);
+}
+
+.bad,
+.rejected {
+    background-color: var(--color-red);
+}
+
+.bad__border {
+    border: .3rem solid var(--color-red-dark);
+}
+
+.pending {
+    background-color: var(--color-purple);
+}
