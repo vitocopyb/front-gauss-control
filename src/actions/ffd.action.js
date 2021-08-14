@@ -1,5 +1,6 @@
 import { types } from '../reducers/types';
 import { getDetailRanking, getDetailSummary, getObtenerUsuarioPorId, getObtenerUsuarios, getOperations, getValidDates } from '../services/ffd.service';
+import { showSweetAlertError } from '../shared/utils';
 
 // ---------------------------------------------------------
 // FIXME: ELIMINAR despues de terminar la prueba
@@ -10,7 +11,10 @@ export const obtenerUsuarios = () => {
             const resp = await getObtenerUsuarios();
             dispatch(obtenerUsuariosOK(resp.data.data));
         } catch (error) {
-            console.log(error);
+            showSweetAlertError({
+                title: 'Error',
+                text: error.message,
+            });
         }
     }
 }
@@ -21,7 +25,10 @@ export const obtenerUsuarioPorId = (id) => {
             const resp = await getObtenerUsuarioPorId(id);
             dispatch(obtenerUsuarioPorIdOK(resp.data.data));
         } catch (error) {
-            console.log(error);
+            showSweetAlertError({
+                title: 'Error',
+                text: error.message,
+            });
         }
     }
 }
@@ -57,18 +64,15 @@ export const obtenerCargaInicial = () => {
                 validDates: resp[1].data.response
             }
 
-            // ---------------------------------------------------------
-            // FIXME: ELIMINAR
-            // ---------------------------------------------------------
-            // console.log('resp', resp);
-
-
             dispatch({
                 type: types.ffd_carga_inicial,
                 payload
             });
         } catch (error) {
-            console.log(error);
+            showSweetAlertError({
+                title: 'Error',
+                text: error.message,
+            });
         }
     }
 }
@@ -83,7 +87,10 @@ export const obtenerSummary = (search) => {
                 payload: resp.data.response
             });
         } catch (error) {
-            console.log(error);
+            showSweetAlertError({
+                title: 'Error',
+                text: error.message,
+            });
         }
     }
 }
@@ -93,17 +100,15 @@ export const obtenerRanking = (search) => {
         try {
             const resp = await getDetailRanking(search);
 
-            // ---------------------------------------------------------
-            // FIXME: ELIMINAR
-            // ---------------------------------------------------------
-            // console.log('obtenerRanking', resp);
-
             dispatch({
                 type: types.ffd_obtener_ranking,
                 payload: resp.data.response
             });
         } catch (error) {
-            console.log(error);
+            showSweetAlertError({
+                title: 'Error',
+                text: error.message,
+            });
         }
     }
 }

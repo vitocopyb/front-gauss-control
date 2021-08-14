@@ -1,8 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export const RankingComponent = () => {
     const { detailRanking = [] } = useSelector(state => state.ffd);
+
+    // colores definidos para el progreso circular
+    const cssRate = {
+        good: {
+            rgba: 'rgba(0, 219, 166, 1)',
+            hex: '#06c394'
+        },
+        fair: {
+            rgba: 'rgba(246, 185, 27, 1)',
+            hex: '#dfa616'
+        },
+        bad: {
+            rgba: 'rgba(240, 94, 109, 1)',
+            hex: '#f05e6d'
+        }
+    };
 
     return (
         <div>
@@ -38,8 +56,16 @@ export const RankingComponent = () => {
                                             </div>
                                         </td>
                                         <td align="center" valign="middle">
-                                            <div className={`row__tasa-text ${item.rejectedIndicator.status.toLowerCase()}__text`}>
-                                                {item.rejectedIndicator.rate}%
+                                            <div className="rate__wrapper">
+                                                <CircularProgressbar
+                                                    value={item.rejectedIndicator.rate}
+                                                    text={`${item.rejectedIndicator.rate}%`}
+                                                    styles={buildStyles({
+                                                        textSize: '1.5rem',
+                                                        pathColor: `${cssRate[item.rejectedIndicator.status.toLowerCase()].rgba}`,
+                                                        textColor: `${cssRate[item.rejectedIndicator.status.toLowerCase()].hex}`
+                                                    })}
+                                                />
                                             </div>
                                         </td>
                                     </tr>

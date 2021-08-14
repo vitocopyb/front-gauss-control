@@ -210,7 +210,11 @@ body {
     color: var(--color-red);
 }
 
-
 .pending {
     background-color: var(--color-purple);
+}
+
+.rate__wrapper {
+    width: 4.5rem;
+    height: 4.5rem;
 }

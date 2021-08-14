@@ -1,36 +1,54 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import es from "date-fns/locale/es";
+import moment from 'moment';
 import { filtrosBusqueda, obtenerRanking, obtenerSummary } from '../actions/ffd.action';
+
+registerLocale('es', es);
 
 export const NavbarComponent = () => {
     const dispatch = useDispatch();
     const { operations, validDates, search } = useSelector(state => state.ffd);
+    const { addToast } = useToasts();
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
 
     useEffect(() => {
         dispatch(obtenerSummary(search));
         dispatch(obtenerRanking(search));
-    }, [dispatch, search]);
+        setDateRange([moment(validDates.minDate).toDate(), moment(validDates.maxDate).toDate()]);
+    }, [dispatch, search, validDates.minDate, validDates.maxDate]);
 
-    const handleInputChange = ({target}) => {
-        let formValid = true;
+    const handleInputChange = (event) => {
+        const { target } = event;
         search[target.name] = target.value;
+        dispatchSearch(search);
+    }
 
-        // valida que la "fecha desde" no sea mayor que "fecha hasta"
-        if (target.name === 'start' || target.name === 'end') {
-            if (search.start > search.end) {
-                formValid = false;
-                // ---------------------------------------------------------
-                // TODO: agregar SweetAlert
-                // ---------------------------------------------------------
-                alert('Fecha Desde no puede ser mayor a Fecha Hasta');
-            }
-        }
+    const handleDateRange = (dates) => {
+        if (dates[0] && dates[1]) {
+            const start = moment(dates[0]).format('YYYY-MM-DD');
+            const end = moment(dates[1]).format('YYYY-MM-DD');
 
-        if (formValid) {
-            dispatch(filtrosBusqueda(search));
-            dispatch(obtenerSummary(search));
-            dispatch(obtenerRanking(search));
+            search.start = start;
+            search.end = end;
+            dispatchSearch(search);
         }
+    }
+
+    const dispatchSearch = (search) => {
+        dispatch(filtrosBusqueda(search));
+        dispatch(obtenerSummary(search));
+        dispatch(obtenerRanking(search));
+
+        addToast('Vista actualizada', {
+            appearance: 'success',
+            autoDismissTimeout: 2500,
+            autoDismiss: true
+        });
     }
 
     return (
@@ -54,30 +72,22 @@ export const NavbarComponent = () => {
                             }
                         </select>
                     </div>
-                    <div className="col-md-4">
-                        <label htmlFor="txtStart" className="form-label">Fecha Desde</label>
-                        <input
-                            type="date"
-                            id="txtStart"
-                            name="start"
+                    <div className="col-md-6">
+                        <label htmlFor="txtRange" className="form-label">Fecha Desde / Hasta</label>
+                        <DatePicker
+                            id="txtRange"
+                            selectsRange={true}
+                            startDate={startDate}
+                            endDate={endDate}
+                            minDate={moment(validDates.minDate).toDate()}
+                            maxDate={moment(validDates.maxDate).toDate()}
+                            locale="es"
+                            onChange={(dates) => {
+                                setDateRange(dates);
+                                handleDateRange(dates);
+                            }}
+                            dateFormat="dd/MM/yyyy"
                             className="form-control"
-                            value={search.start}
-                            min={validDates.minDate}
-                            max={validDates.maxDate}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div className="col-md-4">
-                        <label htmlFor="txtEnd" className="form-label">Fecha Hasta</label>
-                        <input
-                            type="date"
-                            id="txtEnd"
-                            name="end"
-                            className="form-control"
-                            value={search.end}
-                            min={validDates.minDate}
-                            max={validDates.maxDate}
-                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
