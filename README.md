@@ -1,4 +1,4 @@
-# Prueba Técnica Fron Gauss Control
+# Prueba Técnica Front Gauss Control
 
 ## Instalación
 Descargar / clonar proyecto y ejecutar comando: `$ npm install`
@@ -11,7 +11,8 @@ Puede visualizar el sitio online en la siguiente dirección de GitHub Pages:
 
 [https://vitocopyb.github.io/front-gauss-control/](https://vitocopyb.github.io/front-gauss-control/)
 
-
+## Versión de NodeJS utilizada
+v14.16.0
 
 ## Paquetes de terceros utilizados
 - **Axios v0.21.1**
