@@ -8,12 +8,16 @@ export const SummaryComponent = () => {
 
     return (
         <div>
-            <div className="d-flex mb-4">
-                <div className="me-4">
-                    <CircleComponent detailSummary={detailSummary}/>
+            <div className="row mb-4">
+                <div className="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div className="me-4">
+                        <CircleComponent detailSummary={detailSummary}/>
+                    </div>
                 </div>
-                <div className="d-flex flex-column justify-content-end bar__container">
-                    <BarComponent detailSummary={detailSummary} />
+                <div className="col-12 col-sm-6 col-lg-8 col-xl-9 d-flex flex-column justify-content-end">
+                    <div className="mt-4 bar__container">
+                        <BarComponent detailSummary={detailSummary} />
+                    </div>
                 </div>
             </div>
 

@@ -1,53 +1,8 @@
 import { types } from '../reducers/types';
-import { getDetailRanking, getDetailSummary, getObtenerUsuarioPorId, getObtenerUsuarios, getOperations, getValidDates } from '../services/ffd.service';
+import { getDetailRanking, getDetailSummary, getOperations, getValidDates } from '../services/ffd.service';
 import { showSweetAlertError } from '../shared/utils';
+import { responseOk } from './respose.action';
 
-// ---------------------------------------------------------
-// FIXME: ELIMINAR despues de terminar la prueba
-// ---------------------------------------------------------
-export const obtenerUsuarios = () => {
-    return async (dispatch) => {
-        try {
-            const resp = await getObtenerUsuarios();
-            dispatch(obtenerUsuariosOK(resp.data.data));
-        } catch (error) {
-            showSweetAlertError({
-                title: 'Error',
-                text: error.message,
-            });
-        }
-    }
-}
-
-export const obtenerUsuarioPorId = (id) => {
-    return async (dispatch) => {
-        try {
-            const resp = await getObtenerUsuarioPorId(id);
-            dispatch(obtenerUsuarioPorIdOK(resp.data.data));
-        } catch (error) {
-            showSweetAlertError({
-                title: 'Error',
-                text: error.message,
-            });
-        }
-    }
-}
-
-const obtenerUsuariosOK = (data) => {
-    return {
-        type: types.ffdObtenerUsuarios,
-        payload: data
-    }
-}
-
-const obtenerUsuarioPorIdOK = (data) => {
-    return {
-        type: types.ffdObtenerUsuarioPorId,
-        payload: data
-    }
-}
-
-//
 export const obtenerCargaInicial = () => {
     return async (dispatch) => {
         try {
@@ -64,16 +19,20 @@ export const obtenerCargaInicial = () => {
                 validDates: resp[1].data.response
             }
 
-            dispatch({
-                type: types.ffd_carga_inicial,
-                payload
-            });
+            dispatch(setCargaInicial(payload));
         } catch (error) {
             showSweetAlertError({
                 title: 'Error',
                 text: error.message,
             });
         }
+    }
+}
+
+export const setCargaInicial = (payload) => {
+    return {
+        type: types.ffd_carga_inicial,
+        payload
     }
 }
 
@@ -81,11 +40,7 @@ export const obtenerSummary = (search) => {
     return async (dispatch) => {
         try {
             const resp = await getDetailSummary(search);
-
-            dispatch({
-                type: types.ffd_obtener_summary,
-                payload: resp.data.response
-            });
+            dispatch(setSummary(resp.data.response));
         } catch (error) {
             showSweetAlertError({
                 title: 'Error',
@@ -95,21 +50,32 @@ export const obtenerSummary = (search) => {
     }
 }
 
+export const setSummary = (response) => {
+    return {
+        type: types.ffd_obtener_summary,
+        payload: response
+    }
+}
+
 export const obtenerRanking = (search) => {
     return async (dispatch) => {
         try {
             const resp = await getDetailRanking(search);
-
-            dispatch({
-                type: types.ffd_obtener_ranking,
-                payload: resp.data.response
-            });
+            dispatch(setRanking(resp.data.response));
+            dispatch(responseOk());
         } catch (error) {
             showSweetAlertError({
                 title: 'Error',
                 text: error.message,
             });
         }
+    }
+}
+
+export const setRanking = (response) => {
+    return {
+        type: types.ffd_obtener_ranking,
+        payload: response
     }
 }
 

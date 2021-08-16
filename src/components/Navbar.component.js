@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useToasts } from 'react-toast-notifications';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import es from "date-fns/locale/es";
 import moment from 'moment';
 import { filtrosBusqueda, obtenerRanking, obtenerSummary } from '../actions/ffd.action';
+import { cargando } from '../actions/respose.action';
+import { ToastComponent } from './Toast.component';
 
+// configura a español el datepicker
 registerLocale('es', es);
 
 export const NavbarComponent = () => {
     const dispatch = useDispatch();
     const { operations, validDates, search } = useSelector(state => state.ffd);
-    const { addToast } = useToasts();
+    const { ok } = useSelector(state => state.response);
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
 
@@ -40,22 +42,17 @@ export const NavbarComponent = () => {
     }
 
     const dispatchSearch = (search) => {
+        dispatch(cargando());
         dispatch(filtrosBusqueda(search));
         dispatch(obtenerSummary(search));
         dispatch(obtenerRanking(search));
-
-        addToast('Vista actualizada', {
-            appearance: 'success',
-            autoDismissTimeout: 2500,
-            autoDismiss: true
-        });
     }
 
     return (
         <div className="d-flex justify-content-between align-items-center navbar__container">
             <div className="d-flex">
                 <div className="row g-3">
-                    <div className="col-md-4">
+                    <div className="col-12 col-sm-6">
                         <label htmlFor="selOperations" className="form-label">Operación</label>
                         <select
                             id="selOperations"
@@ -72,8 +69,8 @@ export const NavbarComponent = () => {
                             }
                         </select>
                     </div>
-                    <div className="col-md-6">
-                        <label htmlFor="txtRange" className="form-label">Fecha Desde / Hasta</label>
+                    <div className="col-12 col-sm-6">
+                        <label htmlFor="txtRange" className="form-label">Fecha</label>
                         <DatePicker
                             id="txtRange"
                             selectsRange={true}
@@ -86,7 +83,7 @@ export const NavbarComponent = () => {
                                 setDateRange(dates);
                                 handleDateRange(dates);
                             }}
-                            dateFormat="dd/MM/yyyy"
+                            dateFormat="dd/MM"
                             className="form-control"
                         />
                     </div>
@@ -95,6 +92,11 @@ export const NavbarComponent = () => {
             <div>
                 <i className="fas fa-user fa-lg"></i>
             </div>
+            {
+                (ok) && (
+                    <ToastComponent title="Vista actualizada" appearance="success" />
+                )
+            }
         </div>
     )
 }

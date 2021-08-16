@@ -43,6 +43,9 @@ body {
 .border__yellow {
     border: 2px solid yellow;
 }
+.border__green {
+    border: 2px solid green;
+}
 
 .menu__container {
     background-color: var(--color-dark);
@@ -217,4 +220,12 @@ body {
 .rate__wrapper {
     width: 4.5rem;
     height: 4.5rem;
+}
+
+.form-select,
+.form-control,
+.form-control:focus {
+    background-color: var(--color-grey-dark);
+    color: white;
+    border-color: transparent;
 }

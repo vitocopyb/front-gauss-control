@@ -3,4 +3,7 @@ export const types = {
     ffd_obtener_summary: 'ffd-obtener-summary',
     ffd_obtener_ranking: 'ffd-obtener-ranking',
     ffd_filtros_busqueda: 'ffd-filtros-busqueda',
+
+    response_cargando: 'response-cargando',
+    response_ok: 'response-ok',
 };

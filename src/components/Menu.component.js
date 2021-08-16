@@ -3,7 +3,7 @@ import logo from '../assets/img/logo-gauss-control.png';
 
 export const MenuComponent = () => {
     return (
-        <div className="menu__container">
+        <div className="d-none d-md-block menu__container">
             {/* LOGO */}
             <div className="d-flex justify-content-center mt-3">
                 <img src={logo} alt="logo" className="menu__logo" />

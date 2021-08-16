@@ -1,10 +1,6 @@
 import { types } from './types';
 
 const initialState = {
-    // TODO: ELIMINAR DESPUES DE TERMINAR PRUEBA
-    users: [],
-    currentUser: {},
-    //
     operations: [],
     validDates: {},
     detailSummary: {},
@@ -18,18 +14,6 @@ const initialState = {
 
 export const ffdReducer = (state = initialState, action) => {
     switch (action.type) {
-        // TODO: ELIMINAR DESPUES DE TERMINAR PRUEBA
-        case types.ffdObtenerUsuarios:
-            return {
-                ...state,
-                users: action.payload
-            }
-        case types.ffdObtenerUsuarioPorId:
-            return {
-                ...state,
-                currentUser: action.payload
-            }
-        //
         case types.ffd_carga_inicial:
             return {
                 ...state,

@@ -1,19 +1,5 @@
 import axios from 'axios';
 
-// TODO: eliminar despues de terminar las pruebas
-const apiService = axios.create({
-    baseURL: 'https://reqres.in/api'
-});
-
-export const getObtenerUsuarios = () => {
-    return apiService.get('/users');
-}
-
-export const getObtenerUsuarioPorId = (id) => {
-    return apiService.get(`/users/${id}`);
-}
-
-//
 const apiFFD = axios.create({
     baseURL: 'https://pg.gausscontrol.com:8020/ffd'
 });
