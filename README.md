@@ -1,76 +1,52 @@
-# Getting Started with Create React App
+# Prueba Técnica Fron Gauss Control
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instalación
+Descargar / clonar proyecto y ejecutar comando: `$ npm install`
 
-## Available Scripts
+## Correr aplicación
+Para levantar aplicación en equipo local ejecutar comando: `$ npm start` o `$ yarn start`
 
-In the project directory, you can run:
+## Visualizar aplicación en GitHub Pages
+Puede visualizar el sitio online en la siguiente dirección de GitHub Pages:
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://vitocopyb.github.io/front-gauss-control/](https://vitocopyb.github.io/front-gauss-control/)
 
 
-## Link de ayudas
-https://programmerclick.com/article/25791086591/
-https://freefrontend.com/bootstrap-progress-bars/
-https://todoist.com/app/today
+
+## Paquetes de terceros utilizados
+- **Axios v0.21.1**
+
+    Librería para manejar peticiones Http - [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
+
+
+- **moment v2.29.1**
+
+    Librería para el manejo de fechas - [https://www.npmjs.com/package/moment](https://www.npmjs.com/package/moment)
+
+- **react-circular-progressbar v2.0.4**
+
+    Component para dibujar un progreso circular - [https://www.npmjs.com/package/react-circular-progressbar](https://www.npmjs.com/package/react-circular-progressbar)
+
+- **react-datepicker v4.2.0**
+
+    Componente para utilizar un modal con rango de fechas - [https://www.npmjs.com/package/react-datepicker](https://www.npmjs.com/package/react-datepicker)
+
+- **react-redux v7.2.4**
+
+    Librería para manejar el patrón de diseño Redux desde React - [https://react-redux.js.org/](https://react-redux.js.org/)
+
+- **redux v4.1.1**
+
+    Librería para manejar el patrón de diseño Redux - [https://www.npmjs.com/package/redux](https://www.npmjs.com/package/redux)
+
+- **redux-thunk v2.3.0**
+
+    Librería para crear middleware que manejen peticiones asincronas en Redux - [https://www.npmjs.com/package/redux-thunk](https://www.npmjs.com/package/redux-thunk)
+
+- **react-toast-notifications v2.5.1**
+
+    Componente para mostrar notificaciones toast - [https://www.npmjs.com/package/react-toast-notifications](https://www.npmjs.com/package/react-toast-notifications)
+
+- **sweetalert2 v11.1.2**
+
+    Componente para mostrar mensajes de alertas más estilizados - [https://sweetalert2.github.io/](https://sweetalert2.github.io/)
