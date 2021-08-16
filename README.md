@@ -15,6 +15,14 @@ Puede visualizar el sitio online en la siguiente dirección de GitHub Pages:
 v14.16.0
 
 ## Paquetes de terceros utilizados
+- **Bootstrap v5.1.0**
+
+    Librería para aplicar estilos css - [https://getbootstrap.com](https://getbootstrap.com)
+
+- **Font Awesome v5.15.4**
+
+    Librería para utilizar iconos - [https://fontawesome.com](https://fontawesome.com)
+
 - **Axios v0.21.1**
 
     Librería para manejar peticiones Http - [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
